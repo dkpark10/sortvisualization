@@ -46,12 +46,19 @@
     </span>
   </header>
   <select name="sortType">
-    <option value="">select sort</option>
-    <option value="selection"><label>Selection Sort</label></option>
+    <option value="selection">Selection Sort</option>
+    <option value="insertion">Insertion Sort</option>
     <option value="bubble">Bubble Sort</option>
+    <option value="cocktail">Cocktail Sort</option>
+    <option value="quick">Quick Sort</option>
+    <option value="heap">Heap Sort</option>
+    <option value="merge">Merge Sort</option>
     <option value="radix">Radix Sort</option>
   </select>
   <section id='sortBoard'>
+    <% for(let i=0; i< e.shf.length; i++){ %>
+      <span id = element<%=i%> style ="height: <%=e.shf[i]%>px; background: <%=e.rbw[e.shf[i] - 1]%>;" ></span>
+    <% } %>
   </section>
   <button id='run'>run</button>
 </body>
