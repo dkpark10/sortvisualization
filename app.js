@@ -10,6 +10,8 @@ const session = require('express-session');
 const fileStore = require('session-file-store')(session)
 const secret = require('./secret/session')
 
+const sortrouter = require('./Router/sortrouter.js');
+
 const createRainbowColor = require('./lib/rainbowColor');
 const createShuffledList = require('./lib/shuffleList');
 
@@ -19,6 +21,8 @@ app.use(bodyparser.json());
 app.use(compression());
 app.use(helmet());
 app.use(session(secret));
+
+app.use('/', sortrouter);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
