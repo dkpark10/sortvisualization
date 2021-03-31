@@ -10,10 +10,11 @@ const session = require('express-session');
 const fileStore = require('session-file-store')(session)
 const secret = require('./secret/session')
 
-const sortrouter = require('./Router/sortrouter.js');
-
 const createRainbowColor = require('./lib/rainbowColor');
 const createShuffledList = require('./lib/shuffleList');
+
+const sortrouter = require('./Router/sortrouter');
+const shufflerouter = require('./Router/shufflerouter');
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -23,6 +24,7 @@ app.use(helmet());
 app.use(session(secret));
 
 app.use('/', sortrouter);
+app.use('/', shufflerouter);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -31,16 +33,18 @@ app.use('/lib', express.static('lib'));       // 다른 곳에 있는 lib 파일
 
 app.get('/', (request, response) => {
 
-  if(request.session.sess === undefined){
+  if (request.session.sess === undefined) {
     const rainbow = createRainbowColor();
     const shuffle = createShuffledList(rainbow.length);
     const sess = {
       rbw: rainbow,
       shf: shuffle
     };
+
     request.session.sess = sess;
   }
-  response.render("index", { e: request.session.sess  });
+
+  response.render("index", { e: request.session.sess });
 });
 
 app.use((request, response, next) => {

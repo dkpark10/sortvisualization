@@ -27,6 +27,22 @@ aside button{
   margin-right: 2px;
 }
 
+nav{
+  float:left;
+  width: 20%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+nav p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+aside{
+  float: right;
+  width: 20%;
+}
+
 aside button:hover{
   color: white;
   background-color:  #1a75ff;
@@ -34,16 +50,6 @@ aside button:hover{
 
 aside button:active {
   background-color:   #0047b3;
-}
-
-nav{
-  float:left;
-  width: 20%;
-}
-
-aside{
-  float: right;
-  width: 20%;
 }
 
 #sortType{
