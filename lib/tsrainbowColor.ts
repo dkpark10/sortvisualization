@@ -1,6 +1,7 @@
 'use strict'
 
 export function createRainbowColor(): string[] {
+  
   let rainbowColor: string[] = new Array();
   const max: number = 255;
   const divi: number = 3;
