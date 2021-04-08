@@ -1,10 +1,12 @@
 'use strict';
-import { ArrayforSwapSort } from './tsinterface'
-import { ArrayforSubstitutionSort } from './tsinterface'
-import { returnSHuffleJson } from './tsinterface'
-import { returnSortJson } from './tsinterface'
+import { ArrayforSwapSort } from './interface'
+import { ArrayforSubstitutionSort } from './interface'
+import { returnSHuffleJson } from './interface'
+import { returnSortJson } from './interface'
 
 var isRun: boolean = false;
+const spanComparsion = document.getElementById('comparison') as HTMLSpanElement;
+const spanPercentage = document.getElementById('percentage') as HTMLSpanElement;
 
 function runSwapElement(swpswapedElementarr: ArrayforSwapSort[]) {
 
@@ -15,8 +17,8 @@ function runSwapElement(swpswapedElementarr: ArrayforSwapSort[]) {
       const e2: HTMLSpanElement = document.getElementById(element.e2) as HTMLSpanElement;
 
       const percentage: string = (((curidx + 1) / self.length) * 100).toFixed(4);
-      document.getElementById('comparison').innerText = `comparison: ${curidx}`;
-      document.getElementById('percentage').innerText = `percentage: ${percentage}% `;
+      spanComparsion.innerText = `comparison: ${curidx}`;
+      spanPercentage.innerText = `percentage: ${percentage}% `;
 
       let e1height: number = e1.clientHeight;
       let e2height: number = e2.clientHeight;
@@ -45,8 +47,8 @@ function runSubstituteElement(swpswapedElementarr: ArrayforSubstitutionSort[]) {
       const e1: HTMLSpanElement = document.getElementById(`element${element.idx}`) as HTMLSpanElement;
 
       const percentage: string = (((curidx + 1) / self.length) * 100).toFixed(4);
-      document.getElementById('comparison').innerText = `comparison: ${curidx}`;
-      document.getElementById('percentage').innerText = `percentage: ${percentage}% `;
+      spanComparsion.innerText = `comparison: ${curidx}`;
+      spanPercentage.innerText = `percentage: ${percentage}% `;
 
       const e2: number = element.height;
       const color: string = element.color;
@@ -106,8 +108,8 @@ function clickShuffle() {
   if (isRun) return;                 // 돌리는 중이라면 리턴
   isRun = false;
 
-  document.getElementById('comparison').innerText = `comparison: 0`;
-  document.getElementById('percentage').innerText = `comparison: 0`;
+  spanComparsion.innerText = `comparison: 0`;
+  spanPercentage.innerText = `comparison: 0`;
 
   const xhr: XMLHttpRequest = new XMLHttpRequest() as XMLHttpRequest;
 
@@ -143,6 +145,9 @@ function clickShuffle() {
 
 
 window.onload = function () {
-  document.getElementById('run').addEventListener('click', clickRun);
-  document.getElementById('shuffle').addEventListener('click', clickShuffle);
+  const buttonRun = document.getElementById('run') as HTMLButtonElement;
+  const buttonShuffle = document.getElementById('shuffle') as HTMLButtonElement;
+
+  buttonRun.addEventListener('click', clickRun);
+  buttonShuffle.addEventListener('click', clickShuffle);
 }

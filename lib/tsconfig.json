@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "noImplicitAny": true, // 최소 기본타입에 any라도 넣어줘라 ~~
-    "target": "es6"
-  }
-}

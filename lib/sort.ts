@@ -1,6 +1,6 @@
 'use strict'
-import { ArrayforSwapSort } from './tsinterface'
-import { ArrayforSubstitutionSort } from './tsinterface'
+import { ArrayforSwapSort } from './interface'
+import { ArrayforSubstitutionSort } from './interface'
 
 
 export const sortHandler = {
@@ -57,8 +57,8 @@ export const sortHandler = {
           swparr.push({ e1: `element${j}`, e2: `element${j - 1}` });
         }
       }
-      return swparr;
     }
+    return swparr;
   },
 
   insertion: function (shuffledList: number[]): ArrayforSwapSort[] {
@@ -246,7 +246,7 @@ export const sortHandler = {
       let idx: number = 0;
       queue.map((array: number[], arrayidx: number, selfarr: number[][]) => {
         while (array.length) {
-          shuffledList[idx++] = array.shift();
+          shuffledList[idx++] = array.shift() as number;      // undefined 대입할 수 있기 때문에 타입단언
           swpradix.push({
             idx: idx - 1,
             height: shuffledList[idx - 1],
