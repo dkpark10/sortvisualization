@@ -4,6 +4,11 @@ import { ArrayforSubstitutionSort } from './interface'
 
 
 export const sortHandler = {
+
+  constructor(){
+
+  },
+  
   selection: function (shuffledList: number[]): ArrayforSwapSort[] {
 
     const swparr: ArrayforSwapSort[] = new Array();
