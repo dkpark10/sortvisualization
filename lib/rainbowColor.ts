@@ -61,7 +61,7 @@ export function createRainbowColor(): string[] {
       (v: number, index: number) => index * divi)
       .map((element: number, index: number) => {
         const hex = convertHex(element);
-        return `${hex}00FF`;
+        return `#${hex}00FF`;
       });
     rainbowColor = rainbowColor.concat(cvtBluetoViolet);
   })();

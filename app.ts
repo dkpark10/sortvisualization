@@ -1,7 +1,6 @@
 'use strict';
 
 declare function require(param: string): any;
-
 // import * as express from "express";
 import { Request, Response, NextFunction } from 'express';
 // const express: any = require('express');
@@ -15,6 +14,8 @@ const session: any = require('express-session');
 const fileStore: any = require('session-file-store')(session)
 const port: number = 8080;
 
+import * as shufflerouter from './Router/shufflerouter';
+import * as sortrouter from './Router/sortrouter';
 import { secret } from './secret/session';
 import { createRainbowColor } from './lib/rainbowColor';
 import { createShuffledList } from './lib/shuffleList';
@@ -28,8 +29,8 @@ app.use(compression());
 app.use(helmet());
 app.use(session(secret));
 
-// app.use('/', sortrouter);
-// app.use('/', shufflerouter);
+app.use('/', sortrouter);
+app.use('/', shufflerouter);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

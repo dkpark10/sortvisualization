@@ -23,7 +23,7 @@ function createSortFactory(shu: number[], rbw: string[]): Object{
   const rainbowColor: string[] = rbw;
 
   return {
-    getSortType: function (type: string): ArrayforSubstitutionSort[] | ArrayforSwapSort[] | undefined{
+    getSortType: function (type: string): ArrayforSubstitutionSort[] | ArrayforSwapSort[] | undefined {
 
       switch (type) {
         case 'selection':
@@ -74,5 +74,4 @@ router.post('/sort', (request: Request, response: Response) => {
   response.status(200).json(retJson);
 });
 
-
-module.exports = router;
+export = router;
