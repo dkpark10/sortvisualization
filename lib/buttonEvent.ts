@@ -5,8 +5,7 @@ import { returnSHuffleJson } from './interface'
 import { returnSortJson } from './interface'
 
 var isRun: boolean = false;
-const spanComparsion = document.getElementById('comparison') as HTMLSpanElement;
-const spanPercentage = document.getElementById('percentage') as HTMLSpanElement;
+
 
 function runSwapElement(swpswapedElementarr: ArrayforSwapSort[]) {
 
@@ -17,6 +16,9 @@ function runSwapElement(swpswapedElementarr: ArrayforSwapSort[]) {
       const e2: HTMLSpanElement = document.getElementById(element.e2) as HTMLSpanElement;
 
       const percentage: string = (((curidx + 1) / self.length) * 100).toFixed(4);
+      
+      const spanComparsion = document.getElementById('comparison') as HTMLSpanElement;
+      const spanPercentage = document.getElementById('percentage') as HTMLSpanElement;
       spanComparsion.innerText = `comparison: ${curidx}`;
       spanPercentage.innerText = `percentage: ${percentage}% `;
 
@@ -47,6 +49,9 @@ function runSubstituteElement(swpswapedElementarr: ArrayforSubstitutionSort[]) {
       const e1: HTMLSpanElement = document.getElementById(`element${element.idx}`) as HTMLSpanElement;
 
       const percentage: string = (((curidx + 1) / self.length) * 100).toFixed(4);
+      
+      const spanComparsion = document.getElementById('comparison') as HTMLSpanElement;
+      const spanPercentage = document.getElementById('percentage') as HTMLSpanElement;
       spanComparsion.innerText = `comparison: ${curidx}`;
       spanPercentage.innerText = `percentage: ${percentage}% `;
 
@@ -108,6 +113,8 @@ function clickShuffle() {
   if (isRun) return;                 // 돌리는 중이라면 리턴
   isRun = false;
 
+  const spanComparsion = document.getElementById('comparison') as HTMLSpanElement;
+  const spanPercentage = document.getElementById('percentage') as HTMLSpanElement;
   spanComparsion.innerText = `comparison: 0`;
   spanPercentage.innerText = `comparison: 0`;
 
@@ -150,4 +157,5 @@ window.onload = function () {
 
   buttonRun.addEventListener('click', clickRun);
   buttonShuffle.addEventListener('click', clickShuffle);
+
 }

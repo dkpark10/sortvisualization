@@ -56,10 +56,10 @@ export const sortHandler = {
         }
       }
 
-      for (let j: number = len - i - 1; j > i; i--) {
-        if (shuffledList[j] < shuffledList[j - 1]) {
-          [shuffledList[j], shuffledList[j - 1]] = [shuffledList[j - 1], shuffledList[j]];
-          swparr.push({ e1: `element${j}`, e2: `element${j - 1}` });
+      for (let k: number = len - i - 1; k > i; k--) {
+        if (shuffledList[k] < shuffledList[k - 1]) {
+          [shuffledList[k], shuffledList[k - 1]] = [shuffledList[k - 1], shuffledList[k]];
+          swparr.push({ e1: `element${k}`, e2: `element${k - 1}` });
         }
       }
     }

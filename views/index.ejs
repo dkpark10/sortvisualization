@@ -23,7 +23,7 @@
   </nav>
   <section id='sortBoard'>
     <% for(let i=0; i< e.shf.length; i++){ %>
-    <span id=element<%=i%> style="height: <%=e.shf[i]%>px; background: <%=e.rbw[i]%>;"></span>
+    <span id=element<%=i%> style="height: <%=e.shf[i]%>px; background: <%=e.rbw[e.shf[i] - 1]%>;"></span>
     <% } %>
   </section>
   <aside>
