@@ -1,16 +1,16 @@
 'use strict';
-var express = require('express');
-var router = express.Router();
-var sanitizer = require('sanitize-html');
-var sort_1 = require("../lib/sort");
+const express = require('express');
+const router = express.Router();
+const sanitizer = require('sanitize-html');
+const sort_1 = require("../lib/sort");
 function deleteSess(request) {
     request.session.destroy(function () {
         request.session;
     });
 }
 function createSortFactory(shu, rbw) {
-    var shuffledList = shu;
-    var rainbowColor = rbw;
+    const shuffledList = shu;
+    const rainbowColor = rbw;
     return {
         getSortType: function (type) {
             switch (type) {
@@ -45,14 +45,15 @@ function createSortFactory(shu, rbw) {
         }
     };
 }
-router.post('/sort', function (request, response) {
-    var sorttype = sanitizer(request.body.sorttype);
-    var shuffledList = request.session.sess.shf;
-    var rainbowColor = request.session.sess.rbw;
-    var sortFactory = createSortFactory(shuffledList, rainbowColor);
-    var retJson = { ret: sortFactory.getSortType(sorttype) };
+router.post('/sort', (request, response) => {
+    const sorttype = sanitizer(request.body.sorttype);
+    const shuffledList = request.session.sess.shf;
+    const rainbowColor = request.session.sess.rbw;
+    let sortFactory = createSortFactory(shuffledList, rainbowColor);
+    const retJson = { ret: sortFactory.getSortType(sorttype) };
     sortFactory = null;
     deleteSess(request);
     response.status(200).json(retJson);
 });
 module.exports = router;
+//# sourceMappingURL=sortrouter.js.map

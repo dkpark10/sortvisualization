@@ -36,7 +36,8 @@ function runSwapElement(swpswapedElementarr: ArrayforSwapSort[]) {
       e1.style.backgroundColor = `${e1color}`;
       e2.style.backgroundColor = `${e2color}`;
 
-      isRun = setComplete(swpswapedElementarr.length, curidx);
+      new Promise((resolve, reject) => resolve(false))
+      .then((arg: boolean) => isRun = arg); 
     }, 10);
   });
 }
@@ -67,14 +68,11 @@ function runSubstituteElement(swpswapedElementarr: ArrayforSubstitutionSort[]) {
         begin++;
       }
 
-      isRun = setComplete(swpswapedElementarr.length, curidx);
     }, 10);
+
+    new Promise((resolve, reject) => resolve(false))
+      .then((arg: boolean) => isRun = arg); 
   });
-}
-
-
-function setComplete(length: number, curidx: number): boolean {
-  return !((length - 1) === curidx);
 }
 
 
@@ -159,3 +157,5 @@ window.onload = function () {
   buttonShuffle.addEventListener('click', clickShuffle);
 
 }
+
+console.log('.....');

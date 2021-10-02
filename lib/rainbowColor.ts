@@ -68,3 +68,5 @@ export function createRainbowColor(): string[] {
 
   return rainbowColor;
 }
+
+console.log('.....');

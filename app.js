@@ -38,10 +38,17 @@ app.get('/', function (request, response, next) {
     }
     response.render("index", { e: request.session.sess });
 });
-app.use('/', function (request, response, next) {
+app.post('/', function (request, response, next) {
+    const body = request.body.sorttype;
+    console.log(body);
+    response.status(200).json({
+        msg: body 
+    })
+});
+app.use(function (request, response, next) {
     response.status(404).send('Not Found');
 });
-app.use('/', function (error, request, response, next) {
+app.use(function (error, request, response, next) {
     console.error(error.stack);
     response.status(500).send('Something broke');
 });
