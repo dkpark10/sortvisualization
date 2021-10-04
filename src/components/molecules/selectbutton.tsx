@@ -4,6 +4,7 @@ import Button from '../atoms/button'
 import Select from '../atoms/select';
 import createShuffledList from '../../modules/shuffle';
 import SortFactory from '../../modules/sortfactory';
+import color from '../../modules/color';
 import { ArrayforSwapSort, ArrayforSubstitutionSort } from '../../modules/sorts';
 import * as reducer from '../../redux/index';
 
@@ -34,8 +35,7 @@ const SelectButton = () => {
     });
   }
 
-
-  const shuffle = () => dispatch(reducer.setShuffleList(createShuffledList(425)));
+  const shuffle = () => dispatch(reducer.setShuffleList(createShuffledList(color.length)));
 
   return (
     <>

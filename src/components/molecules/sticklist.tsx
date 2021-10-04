@@ -21,6 +21,7 @@ const StickList = ({ color }: SticksProps) => {
     dispatch(reducer.setShuffleList(createShuffledList(color.length)));
   }, [dispatch, color]);
 
+
   const stickList: JSX.Element[] = shuffleList.map((ele, idx) => {
 
     return (

@@ -1,3 +1,5 @@
+import React from "react";
+
 interface StickProp {
   height: number;
   color: string;
@@ -12,7 +14,7 @@ const Stick = ({ height, color }: StickProp) => {
         style={
           {
             background: `${color}`,
-            height: `${height}px`
+            height: `${(height / 2).toFixed(1)}px`
           }
         }
       />
@@ -20,4 +22,5 @@ const Stick = ({ height, color }: StickProp) => {
   )
 }
 
-export default Stick;
+export default React.memo(Stick, (prev: StickProp, next: StickProp) =>
+  prev.height === next.height);
