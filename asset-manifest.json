@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rainbowsort/static/css/main.3a2eec08.chunk.css",
-    "main.js": "/rainbowsort/static/js/main.2980ed1e.chunk.js",
-    "main.js.map": "/rainbowsort/static/js/main.2980ed1e.chunk.js.map",
+    "main.js": "/rainbowsort/static/js/main.966ff6f6.chunk.js",
+    "main.js.map": "/rainbowsort/static/js/main.966ff6f6.chunk.js.map",
     "runtime-main.js": "/rainbowsort/static/js/runtime-main.f5c3c6a4.js",
     "runtime-main.js.map": "/rainbowsort/static/js/runtime-main.f5c3c6a4.js.map",
     "static/js/2.85cab168.chunk.js": "/rainbowsort/static/js/2.85cab168.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f5c3c6a4.js",
     "static/js/2.85cab168.chunk.js",
     "static/css/main.3a2eec08.chunk.css",
-    "static/js/main.2980ed1e.chunk.js"
+    "static/js/main.966ff6f6.chunk.js"
   ]
 }
