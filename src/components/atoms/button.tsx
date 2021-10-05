@@ -1,15 +1,16 @@
 import react, { MouseEvent } from 'react';
 
 interface ButtonProps {
+  disabled: boolean;
   onClick: react.MouseEventHandler<HTMLButtonElement>;
   text: string;
 }
 
-const Button = ({ onClick, text }: ButtonProps) => {
+const Button = ({ disabled, onClick, text }: ButtonProps) => {
   
   return (
     <>
-      <button onClick={onClick}>{text}</button>
+      <button disabled={disabled} onClick={onClick}>{text}</button>
     </>
   )
 }

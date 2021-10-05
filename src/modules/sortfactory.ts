@@ -1,4 +1,17 @@
-import Sort, { SelectionSort, HeapSort, InsertionSort, BubbleSort, CocktailSort, QuickSort } from './sorts';
+import Sort,
+{
+  SelectionSort,
+  HeapSort,
+  InsertionSort,
+  BubbleSort,
+  CocktailSort,
+  QuickSort,
+  MergeSort,
+  RadixSort,
+  ArrayforSwapSort,
+  ArrayforSubstitutionSort
+} from './sorts';
+
 
 export default class SortFactory {
 
@@ -32,8 +45,10 @@ export default class SortFactory {
         this.sort = new HeapSort();
         break;
       case 'merge':
+        this.sort = new MergeSort();
         break;
       case 'radix':
+        this.sort = new RadixSort();
         break;
     }
 
