@@ -2,6 +2,7 @@
   "name": "rainbowsort",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dkpark10.github.io/rainbowsort",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -17,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +44,7 @@
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "@types/react-redux": "^7.1.18",
+    "gh-pages": "^3.2.3",
     "typescript": "^4.4.3"
   }
 }

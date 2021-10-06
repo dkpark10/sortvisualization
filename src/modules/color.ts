@@ -1,7 +1,7 @@
 const createRainbowColor = (): string[] => {
 
   const max: number = 255;
-  const divi: number = 5;
+  const divi: number = 3;
 
   const convertHex = (num: number): string => {
     const hex: string = num.toString(16);

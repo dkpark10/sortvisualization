@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 body{
@@ -27,7 +28,6 @@ body{
 aside button{
   width:65px;
   justify-content: center;
-  font-family: 'Noto Sans JP', sans-serif;
   color:  #1a75ff;
   border-radius: 8px;
   border: 1px solid  #1a75ff;
@@ -39,7 +39,7 @@ aside button{
 nav{
   float:left;
   width: 20%;
-  font-family: 'Noto Sans JP', sans-serif;
+  color:white;
 }
 
 nav p{
