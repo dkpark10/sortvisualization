@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/rainbowsort/static/css/main.3a2eec08.chunk.css",
-    "main.js": "/rainbowsort/static/js/main.966ff6f6.chunk.js",
-    "main.js.map": "/rainbowsort/static/js/main.966ff6f6.chunk.js.map",
+    "main.css": "/rainbowsort/static/css/main.d2c8aa0b.chunk.css",
+    "main.js": "/rainbowsort/static/js/main.ec06785e.chunk.js",
+    "main.js.map": "/rainbowsort/static/js/main.ec06785e.chunk.js.map",
     "runtime-main.js": "/rainbowsort/static/js/runtime-main.f5c3c6a4.js",
     "runtime-main.js.map": "/rainbowsort/static/js/runtime-main.f5c3c6a4.js.map",
-    "static/js/2.85cab168.chunk.js": "/rainbowsort/static/js/2.85cab168.chunk.js",
-    "static/js/2.85cab168.chunk.js.map": "/rainbowsort/static/js/2.85cab168.chunk.js.map",
+    "static/js/2.a18164f0.chunk.js": "/rainbowsort/static/js/2.a18164f0.chunk.js",
+    "static/js/2.a18164f0.chunk.js.map": "/rainbowsort/static/js/2.a18164f0.chunk.js.map",
     "static/js/3.0c6ea8cd.chunk.js": "/rainbowsort/static/js/3.0c6ea8cd.chunk.js",
     "static/js/3.0c6ea8cd.chunk.js.map": "/rainbowsort/static/js/3.0c6ea8cd.chunk.js.map",
     "index.html": "/rainbowsort/index.html",
-    "static/css/main.3a2eec08.chunk.css.map": "/rainbowsort/static/css/main.3a2eec08.chunk.css.map",
-    "static/js/2.85cab168.chunk.js.LICENSE.txt": "/rainbowsort/static/js/2.85cab168.chunk.js.LICENSE.txt"
+    "static/css/main.d2c8aa0b.chunk.css.map": "/rainbowsort/static/css/main.d2c8aa0b.chunk.css.map",
+    "static/js/2.a18164f0.chunk.js.LICENSE.txt": "/rainbowsort/static/js/2.a18164f0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f5c3c6a4.js",
-    "static/js/2.85cab168.chunk.js",
-    "static/css/main.3a2eec08.chunk.css",
-    "static/js/main.966ff6f6.chunk.js"
+    "static/js/2.a18164f0.chunk.js",
+    "static/css/main.d2c8aa0b.chunk.css",
+    "static/js/main.ec06785e.chunk.js"
   ]
 }
