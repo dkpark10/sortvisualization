@@ -2,7 +2,7 @@ import './css/App.css';
 import rainbowColor from './modules/color';
 import Sticks from './components/molecules/sticklist';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import SelectButton from './components/molecules/selectbutton';
 import { ArrayforSwapSort, ArrayforSubstitutionSort } from './modules/sorts';
 import * as reducer from './redux/index';
@@ -13,16 +13,18 @@ const isSwapSort = (obj: any): obj is ArrayforSwapSort => {
   return (obj as ArrayforSwapSort).e1 !== undefined;
 }
 
-interface Info{
-  cnt:number;
-  percentage:number;
+interface Info {
+  cnt: number;
+  percentage: number;
 }
 
 const App = () => {
 
+  console.log('App render');
   const [sortType, setSortType] = useState<string>('selection');
   const [lock, setLock] = useState<boolean>(false);
   const [info, setInfo] = useState<Info>({ cnt: 0, percentage: 0 });
+  const [faster, setFaster] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
@@ -43,9 +45,10 @@ const App = () => {
 
     if (isSwapSort(newarr[0])) {
 
-      newarr.forEach((element, idx, self) => {
+      newarr.forEach((element, idx) => {
 
         setTimeout(() => {
+
           const { e1, e2 } = element as ArrayforSwapSort;
           [shuffleList[e1], shuffleList[e2]] = [shuffleList[e2], shuffleList[e1]];
 
@@ -53,16 +56,17 @@ const App = () => {
           setInfo(prev => ({
             ...prev,
             cnt: prev.cnt + 1,
-            percentage : Math.floor(((idx + 1) / size) * 100)
+            percentage: Math.floor(((idx + 1) / size) * 100)
           }))
         }, 10);
       });
     }
     else {
 
-      newarr.forEach((element) => {
+      newarr.forEach((element, percentage) => {
 
         setTimeout(() => {
+
           const { idx, value } = element as ArrayforSubstitutionSort;
           shuffleList[idx] = value;
 
@@ -70,7 +74,7 @@ const App = () => {
           setInfo(prev => ({
             ...prev,
             cnt: prev.cnt + 1,
-            percentage : Math.floor(((idx + 1) / size) * 100)
+            percentage: Math.floor(((percentage + 1) / size) * 100)
           }))
         }, 10);
       });
@@ -78,6 +82,7 @@ const App = () => {
   }
 
   const shuffle = () => {
+
     dispatch(reducer.setShuffleList(createShuffledList(rainbowColor.length)))
     setLock(false);
     setInfo(prev => ({
@@ -87,15 +92,20 @@ const App = () => {
     }))
   }
 
+  const speedToggle = (e: React.ChangeEvent<HTMLInputElement>) => setFaster(e.target.checked);
+
   return (
     <>
       <nav>
-        <p><span>length:{rainbowColor.length} </span></p>
-        <p><span id='comparison'>comparison: {info.cnt}</span></p>
-        <p><span id='percentage'>percentage: {info.percentage}%</span></p>
+        <p><span>LENGTH:{rainbowColor.length} </span></p>
+        <p><span id='comparison'>COMPARISON: {info.cnt}</span></p>
+        <p><span id='percentage'>PERCENTAGE: {info.percentage}%</span></p>
       </nav>
       <section className='sortboard'>
-        <Sticks color={rainbowColor} />
+        <Sticks 
+          color={rainbowColor}
+          faster={faster}
+        />
       </section>
       <aside>
         <SelectButton
@@ -103,7 +113,8 @@ const App = () => {
           runClick={sortRun}
           shuffle={shuffle}
           lock={lock}
-         />
+          toggle={speedToggle}
+        />
       </aside>
     </>
   )

@@ -1,4 +1,4 @@
-import Stick from "../atoms/stick";
+import StickComponent from "../atoms/stick";
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reducer from '../../redux/index';
@@ -6,9 +6,10 @@ import createShuffledList from '../../modules/shuffle';
 
 interface SticksProps {
   color: string[];
+  faster: boolean;
 };
 
-const StickList = ({ color }: SticksProps) => {
+const StickList = ({ color, faster }: SticksProps) => {
 
   const dispatch = useDispatch();
 
@@ -21,16 +22,16 @@ const StickList = ({ color }: SticksProps) => {
     dispatch(reducer.setShuffleList(createShuffledList(color.length)));
   }, [dispatch, color]);
 
-
   const stickList: JSX.Element[] = shuffleList.map((ele, idx) => {
 
     return (
-      <Stick
+      <StickComponent
         key={idx}
         height={ele}
         color={color[ele - 1]}
+        faster={faster}
       />
-    );
+    )
   })
 
   return (

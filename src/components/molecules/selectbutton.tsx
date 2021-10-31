@@ -1,23 +1,33 @@
 import React, { useEffect, useState, memo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Button from '../atoms/button'
 import Select from '../atoms/select';
-import color from '../../modules/color';
+import Toggle from '../atoms/toggle';
 
-interface SelectButtonProps{
+interface SelectButtonProps {
   selectChange: React.ChangeEventHandler<HTMLSelectElement>;
   runClick: React.MouseEventHandler<HTMLButtonElement>;
-  shuffle : React.MouseEventHandler<HTMLButtonElement>;
-  lock : boolean
+  shuffle: React.MouseEventHandler<HTMLButtonElement>;
+  lock: boolean;
+  toggle: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const SelectButton = ({ selectChange, runClick, shuffle, lock }: SelectButtonProps) => {
+const SelectButton = ({
+  selectChange,
+  runClick,
+  shuffle,
+  lock,
+  toggle }: SelectButtonProps) => {
 
   return (
     <>
-      <Select onChange={selectChange} />
-      <Button disabled={lock} onClick={runClick} text='run' />
-      <Button disabled={false} onClick={shuffle} text='shuffle' />
+      <div>
+        <Select onChange={selectChange} />
+      </div>
+      <Button disabled={lock} onClick={runClick} text='RUN' />
+      <Button disabled={false} onClick={shuffle} text='SHUFFLE' />
+      <div>
+        <Toggle onChange={toggle} />
+      </div>
     </>
   )
 }

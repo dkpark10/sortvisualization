@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
@@ -26,14 +26,14 @@ body{
 }
 
 aside button{
-  width:65px;
+  width:70px;
   justify-content: center;
   color:  #1a75ff;
   border-radius: 8px;
   border: 1px solid  #1a75ff;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.19);
   background-color: white;
-  margin-right: 2px;
+  margin-right: 10px;
 }
 
 nav{
@@ -52,6 +52,10 @@ aside{
   width: 20%;
 }
 
+aside button {
+  margin-bottom: 2px;
+}
+
 aside button:hover{
   color: white;
   background-color:  #1a75ff;
@@ -66,4 +70,47 @@ aside button:active {
   margin-right: 8px;
   border-radius: 8px;
   font-family: 'Noto Sans JP', sans-serif;
+}
+
+.faster-button {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+}
+
+.onoff-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius:20px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.onoff-switch:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  bottom: 2px;
+  left: 4px;
+  background-color: #fff;
+  -webkit-transition: .5s;
+  transition: .4s;
+  border-radius:20px;
+}
+
+.faster-button input:checked + .onoff-switch {
+  background-color:  #1a75ff;
+}
+
+.faster-button input:checked + .onoff-switch:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
 }
