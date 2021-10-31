@@ -26,7 +26,9 @@ const SelectButton = ({
       <Button disabled={lock} onClick={runClick} text='RUN' />
       <Button disabled={false} onClick={shuffle} text='SHUFFLE' />
       <div>
+        <label style = {{color:'white'}}>Slower </label>
         <Toggle onChange={toggle} />
+        <label style = {{color:'white'}}> Faster </label>
       </div>
     </>
   )
