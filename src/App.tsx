@@ -2,7 +2,7 @@ import './css/App.css';
 import rainbowColor from './modules/color';
 import Sticks from './components/molecules/sticklist';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SelectButton from './components/molecules/selectbutton';
 import { ArrayforSwapSort, ArrayforSubstitutionSort } from './modules/sorts';
 import * as reducer from './redux/index';
@@ -20,7 +20,6 @@ interface Info {
 
 const App = () => {
 
-  console.log('App render');
   const [sortType, setSortType] = useState<string>('selection');
   const [lock, setLock] = useState<boolean>(false);
   const [info, setInfo] = useState<Info>({ cnt: 0, percentage: 0 });
@@ -47,8 +46,7 @@ const App = () => {
 
       newarr.forEach((element, idx) => {
 
-        setTimeout(() => {
-
+        const tid = setTimeout(() => {
           const { e1, e2 } = element as ArrayforSwapSort;
           [shuffleList[e1], shuffleList[e2]] = [shuffleList[e2], shuffleList[e1]];
 
@@ -58,6 +56,7 @@ const App = () => {
             cnt: prev.cnt + 1,
             percentage: Math.floor(((idx + 1) / size) * 100)
           }))
+          clearTimeout(tid);
         }, 10);
       });
     }
@@ -65,8 +64,7 @@ const App = () => {
 
       newarr.forEach((element, percentage) => {
 
-        setTimeout(() => {
-
+        const tid = setTimeout(() => {
           const { idx, value } = element as ArrayforSubstitutionSort;
           shuffleList[idx] = value;
 
@@ -76,6 +74,7 @@ const App = () => {
             cnt: prev.cnt + 1,
             percentage: Math.floor(((percentage + 1) / size) * 100)
           }))
+          clearTimeout(tid);
         }, 10);
       });
     }
@@ -102,7 +101,7 @@ const App = () => {
         <p><span id='percentage'>PERCENTAGE: {info.percentage}%</span></p>
       </nav>
       <section className='sortboard'>
-        <Sticks 
+        <Sticks
           color={rainbowColor}
           faster={faster}
         />
