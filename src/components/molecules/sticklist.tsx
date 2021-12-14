@@ -24,12 +24,15 @@ const StickList = ({ color, faster }: SticksProps) => {
 
   const stickList: JSX.Element[] = shuffleList.map((ele, idx) => {
 
+    const height = (425 / shuffleList.length) * ele;
+
     return (
       <StickComponent
         key={idx}
-        height={ele}
+        height={Number(height.toFixed(2))}
         color={color[ele - 1]}
         faster={faster}
+        length={shuffleList.length}
       />
     )
   })

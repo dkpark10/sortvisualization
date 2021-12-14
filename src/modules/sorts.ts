@@ -285,19 +285,19 @@ export class RadixSort extends Sort {
 
   public run(shuffledList: number[]): ArrayforSubstitutionSort[] {
 
-    const queue: number[][] = Array.from(Array(10), () => Array());
+    const queue: number[][] = Array.from(Array(10), () => []);
     const maxlength: number = 3;
 
     for (let digit: number = 0; digit < maxlength; digit++) {
 
-      shuffledList.map((element: number, curidx: number, self: number[]) => {
+      shuffledList.forEach((element: number) => {
         const num: number = Math.floor(element / Math.pow(10, digit) % 10);
         queue[num].push(element);
       });
 
       let idx: number = 0;
 
-      queue.map((array: number[], arrayidx: number, selfarr: number[][]) => {
+      queue.forEach((array: number[]) => {
 
         while (array.length) {
           shuffledList[idx++] = array.shift() as number;      // undefined 대입할 수 있기 때문에 타입단언

@@ -1,7 +1,6 @@
-const createRainbowColor = (): string[] => {
+const createRainbowColor = (divi : number): string[] => {
 
-  const max: number = 255;
-  const divi: number = 3;
+  const max = 255;
 
   const convertHex = (num: number): string => {
     const hex: string = num.toString(16);
@@ -57,4 +56,4 @@ const createRainbowColor = (): string[] => {
   ];
 }
 
-export default createRainbowColor();
+export default createRainbowColor;

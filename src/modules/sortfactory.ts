@@ -8,8 +8,6 @@ import Sort,
   QuickSort,
   MergeSort,
   RadixSort,
-  ArrayforSwapSort,
-  ArrayforSubstitutionSort
 } from './sorts';
 
 

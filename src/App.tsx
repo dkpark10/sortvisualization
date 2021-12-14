@@ -1,8 +1,9 @@
 import './css/App.css';
-import rainbowColor from './modules/color';
+import createRainbowColor from './modules/color';
+import calculWidth from './modules/calculwidth';
 import Sticks from './components/molecules/sticklist';
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState, useRef } from 'react';
+import React, {  useState } from 'react';
 import SelectButton from './components/molecules/selectbutton';
 import { ArrayforSwapSort, ArrayforSubstitutionSort } from './modules/sorts';
 import * as reducer from './redux/index';
@@ -24,7 +25,7 @@ const App = () => {
   const [lock, setLock] = useState<boolean>(false);
   const [info, setInfo] = useState<Info>({ cnt: 0, percentage: 0 });
   const [faster, setFaster] = useState<boolean>(false);
-
+  const [colorList, setColorList] = useState<string[]>(createRainbowColor(15));
   const dispatch = useDispatch();
 
   // useSelector는 항상 최상단 함수에 작성한다.
@@ -32,7 +33,11 @@ const App = () => {
     shuffleList: state.shuffleList,
   }));
 
-  const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => setSortType(prev => e.target.value);
+  const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortType(prev => e.target.value);
+    const len = calculWidth(e.target.value);
+    setColorList(prev => [...createRainbowColor(len)]);
+  }
 
   const sortRun = async () => {
 
@@ -82,7 +87,7 @@ const App = () => {
 
   const shuffle = () => {
 
-    dispatch(reducer.setShuffleList(createShuffledList(rainbowColor.length)))
+    dispatch(reducer.setShuffleList(createShuffledList(colorList.length)))
     setLock(false);
     setInfo(prev => ({
       ...prev,
@@ -96,13 +101,13 @@ const App = () => {
   return (
     <>
       <nav>
-        <p><span>LENGTH:{rainbowColor.length} </span></p>
+        <p><span>LENGTH:{colorList.length} </span></p>
         <p><span id='comparison'>COMPARISON: {info.cnt}</span></p>
         <p><span id='percentage'>PERCENTAGE: {info.percentage}%</span></p>
       </nav>
       <section className='sortboard'>
         <Sticks
-          color={rainbowColor}
+          color={colorList}
           faster={faster}
         />
       </section>

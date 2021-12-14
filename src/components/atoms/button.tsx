@@ -1,4 +1,18 @@
-import react, { MouseEvent } from 'react';
+import react from 'react';
+import styled from 'styled-components';
+
+const StyleButton = styled.button`
+  margin-bottom: 2px;
+  
+  &:hover{
+    color: white;
+    background-color:  #1a75ff;  
+  }
+
+  &:active{
+    background-color:   #0047b3;
+  }
+`;
 
 interface ButtonProps {
   disabled: boolean;
@@ -10,7 +24,9 @@ const Button = ({ disabled, onClick, text }: ButtonProps) => {
   
   return (
     <>
-      <button disabled={disabled} onClick={onClick}>{text}</button>
+      <StyleButton onClick={onClick} disabled={disabled}>
+        {text}
+      </StyleButton>
     </>
   )
 }

@@ -1,7 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
-interface SelectProps{
-  onChange : React.ChangeEventHandler<HTMLSelectElement>;
+const StyleSelect = styled.select`
+  width:150px;
+  margin-right: 8px;
+  border-radius: 8px;
+  font-family: 'Noto Sans JP', sans-serif;
+`;
+
+interface SelectProps {
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
 const Select = ({ onChange }: SelectProps) => {
@@ -30,10 +38,9 @@ const Select = ({ onChange }: SelectProps) => {
   })
 
   return (
-
-    <select onChange={onChange} name="sorttype" className="selectsort">
+    <StyleSelect onChange={onChange} name="sorttype" >
       {optionList}
-    </select>
+    </StyleSelect>
   )
 }
 
