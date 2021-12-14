@@ -34,6 +34,7 @@ const App = () => {
   }));
 
   const selectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+
     setSortType(prev => e.target.value);
     const len = calculWidth(e.target.value);
     setColorList(prev => [...createRainbowColor(len)]);

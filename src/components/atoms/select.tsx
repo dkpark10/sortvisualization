@@ -10,9 +10,10 @@ const StyleSelect = styled.select`
 
 interface SelectProps {
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  disabled: boolean;
 }
 
-const Select = ({ onChange }: SelectProps) => {
+const Select = ({ onChange, disabled }: SelectProps) => {
 
   const nameList: string[][] = [
     ['selection', 'Selection Sort'],
@@ -38,7 +39,7 @@ const Select = ({ onChange }: SelectProps) => {
   })
 
   return (
-    <StyleSelect onChange={onChange} name="sorttype" >
+    <StyleSelect onChange={onChange} name="sorttype" disabled={disabled} >
       {optionList}
     </StyleSelect>
   )

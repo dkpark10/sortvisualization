@@ -286,7 +286,7 @@ export class RadixSort extends Sort {
   public run(shuffledList: number[]): ArrayforSubstitutionSort[] {
 
     const queue: number[][] = Array.from(Array(10), () => []);
-    const maxlength: number = 3;
+    const maxlength: number = 4;
 
     for (let digit: number = 0; digit < maxlength; digit++) {
 

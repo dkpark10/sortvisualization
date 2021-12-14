@@ -21,7 +21,7 @@ const SelectButton = ({
   return (
     <>
       <div>
-        <Select onChange={selectChange} />
+        <Select onChange={selectChange} disabled={lock}/>
       </div>
       <Button disabled={lock} onClick={runClick} text='RUN' />
       <Button disabled={false} onClick={shuffle} text='SHUFFLE' />
