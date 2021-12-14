@@ -7,9 +7,8 @@ const calculWidth = (sortType: string): number => {
     case 'cocktail':
       return 15;
     case 'quick':
-    case 'radix':
-      return 1;
     case 'heap':
+    case 'radix':
     case 'merge':
       return 3;
     default: 
