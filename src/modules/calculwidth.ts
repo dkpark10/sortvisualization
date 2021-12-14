@@ -10,7 +10,7 @@ const calculWidth = (sortType: string): number => {
     case 'heap':
     case 'radix':
     case 'merge':
-      return 3;
+      return 5;
     default: 
       return 15;
   }
