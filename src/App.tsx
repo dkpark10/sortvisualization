@@ -1,10 +1,12 @@
-import './css/App.css';
+import './styles/App.css';
 import createRainbowColor from './modules/color';
 import calculWidth from './modules/calculwidth';
 import Sticks from './components/molecules/sticklist';
 import { useDispatch, useSelector } from 'react-redux';
-import React, {  useState } from 'react';
-import SelectButton from './components/molecules/selectbutton';
+import React, { useState } from 'react';
+import Button from './components/atoms/button';
+import Select from './components/atoms/select';
+import Toggle from './components/atoms/toggle';
 import { ArrayforSwapSort, ArrayforSubstitutionSort } from './modules/sorts';
 import * as reducer from './redux/index';
 import createShuffledList from './modules/shuffle';
@@ -40,9 +42,9 @@ const App = () => {
     setColorList(prev => [...createRainbowColor(len)]);
   }
 
-  const sortRun = async () => {
+  const sortRun = () => {
 
-    setLock(prev => true);
+    setLock(true);
 
     const sortFactory: SortFactory = new SortFactory(sortType);
     const newarr: ArrayforSwapSort[] | ArrayforSubstitutionSort[] = sortFactory.createSortInstance().run([...shuffleList]);
@@ -101,26 +103,37 @@ const App = () => {
 
   return (
     <>
-      <nav>
-        <p><span>LENGTH:{colorList.length} </span></p>
-        <p><span id='comparison'>COMPARISON: {info.cnt}</span></p>
-        <p><span id='percentage'>PERCENTAGE: {info.percentage}%</span></p>
-      </nav>
-      <section className='sortboard'>
+      <header>
+        <aside>
+          <div>LENGTH:{colorList.length} </div>
+          <div>COMPARISON: {info.cnt}</div>
+          <div>PERCENTAGE: {info.percentage}%</div>
+        </aside>
+        <aside>
+        <div>
+        <Select onChange={selectChange} disabled={lock} />
+      </div>
+      <div className='wrapper' >
+        <Button disabled={lock} onClick={sortRun}>
+          run
+        </Button>
+        <Button disabled={false} onClick={shuffle}>
+          shuffle
+        </Button>
+      </div>
+      <div className='wrapper'>
+        <label style={{ color: 'white' }}>slower </label>
+        <Toggle onChange={speedToggle} />
+        <label style={{ color: 'white' }}> faster</label>
+      </div>
+        </aside>
+      </header>
+      <main className='sortboard'>
         <Sticks
           color={colorList}
           faster={faster}
         />
-      </section>
-      <aside>
-        <SelectButton
-          selectChange={selectChange}
-          runClick={sortRun}
-          shuffle={shuffle}
-          lock={lock}
-          toggle={speedToggle}
-        />
-      </aside>
+      </main>
     </>
   )
 }

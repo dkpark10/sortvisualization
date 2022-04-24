@@ -22,24 +22,23 @@ const StickList = ({ color, faster }: SticksProps) => {
     dispatch(reducer.setShuffleList(createShuffledList(color.length)));
   }, [dispatch, color]);
 
-  const stickList: JSX.Element[] = shuffleList.map((ele, idx) => {
-
-    const height = (425 / shuffleList.length) * ele;
-
-    return (
-      <StickComponent
-        key={idx}
-        height={Number(height.toFixed(2))}
-        color={color[ele - 1]}
-        faster={faster}
-        length={shuffleList.length}
-      />
-    )
-  })
-
   return (
     <>
-      {stickList}
+      {shuffleList.map((ele, idx) => {
+      
+        const height = (425 / shuffleList.length) * ele;
+        const parsedHeight = `${(height / 2).toFixed(1)}px`;
+
+        return (
+          <StickComponent
+            key={idx}
+            height={parsedHeight}
+            color={color[ele - 1]}
+            faster={faster}
+            length={shuffleList.length}
+          />
+        )
+      })}
     </>
   )
 };

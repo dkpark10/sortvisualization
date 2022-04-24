@@ -21,14 +21,20 @@ const SelectButton = ({
   return (
     <>
       <div>
-        <Select onChange={selectChange} disabled={lock}/>
+        <Select onChange={selectChange} disabled={lock} />
       </div>
-      <Button disabled={lock} onClick={runClick} text='RUN' />
-      <Button disabled={false} onClick={shuffle} text='SHUFFLE' />
+      <div className='button_wrapper' >
+        <Button disabled={lock} onClick={runClick}>
+          run
+        </Button>
+        <Button disabled={lock} onClick={shuffle}>
+          shuffle
+        </Button>
+      </div>
       <div>
-        <label style = {{color:'white'}}>Slower </label>
+        <label style={{ color: 'white' }}>slower </label>
         <Toggle onChange={toggle} />
-        <label style = {{color:'white'}}> Faster </label>
+        <label style={{ color: 'white' }}> faster</label>
       </div>
     </>
   )

@@ -1,5 +1,4 @@
-import Sort,
-{
+import Sort,{
   SelectionSort,
   HeapSort,
   InsertionSort,
@@ -8,6 +7,7 @@ import Sort,
   QuickSort,
   MergeSort,
   RadixSort,
+  ShellSOrt
 } from './sorts';
 
 
@@ -47,6 +47,9 @@ export default class SortFactory {
         break;
       case 'radix':
         this.sort = new RadixSort();
+        break;
+      case 'shell':
+        this.sort = new ShellSOrt();
         break;
     }
 

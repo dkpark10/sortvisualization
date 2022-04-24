@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyleSelect = styled.select`
-  width:150px;
-  margin-right: 8px;
+  width:100%;
   border-radius: 8px;
   font-family: 'Noto Sans JP', sans-serif;
 `;
@@ -23,24 +22,20 @@ const Select = ({ onChange, disabled }: SelectProps) => {
     ['quick', 'Quick Sort'],
     ['heap', 'Heap Sort'],
     ['merge', 'Merge Sort'],
-    ['radix', 'Radix Sort']
+    ['radix', 'Radix Sort'],
+    ['shell', 'Shell Sort']
   ];
-
-  const optionList: JSX.Element[] = nameList.map((ele, idx) => {
-
-    const [val, ph] = ele;
-
-    return (
-      <option
-        key={idx}
-        value={val}
-      >{ph}</option>
-    );
-  })
 
   return (
     <StyleSelect onChange={onChange} name="sorttype" disabled={disabled} >
-      {optionList}
+      {nameList.map((ele, idx) =>
+        <option
+          key={idx}
+          value={ele[0]}
+        >
+          {ele[1]}
+        </option>
+      )}
     </StyleSelect>
   )
 }
