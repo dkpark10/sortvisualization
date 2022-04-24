@@ -14,12 +14,15 @@ interface IStickStyle {
   width: string;
 }
 
-const StickStyle = styled.span<IStickStyle>`
+const StickStyle = styled('span').attrs((props: IStickStyle) => ({
+  style: {
+    background: props.color,
+    height: props.height
+  }
+})) <IStickStyle>`
   margin-top:auto;
   position: relative;
   width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  background-color: ${({ color }) => color};
   display: inline-block;
 
   /* @media screen and (max-width : 768px){

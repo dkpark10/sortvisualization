@@ -16,12 +16,12 @@ const Select = ({ onChange, disabled }: SelectProps) => {
 
   const nameList: string[][] = [
     ['selection', 'Selection Sort'],
-    ['insertion', 'Insertion Sort'],
-    ['bubble', 'Bubble Sort'],
-    ['cocktail', 'Cocktail Sort'],
     ['quick', 'Quick Sort'],
+    ['insertion', 'Insertion Sort'],
     ['heap', 'Heap Sort'],
+    ['bubble', 'Bubble Sort'],
     ['merge', 'Merge Sort'],
+    ['cocktail', 'Cocktail Sort'],
     ['radix', 'Radix Sort'],
     ['shell', 'Shell Sort']
   ];
