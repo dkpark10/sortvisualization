@@ -3,20 +3,26 @@ export default class Component {
 
   $state;
 
-  constructor({ target }) {
+  constructor({ target, state }) {
     this.$target = target;
-    this.render();
+    this.$state = state;
+    this.setHtml();
   }
 
   setState(newState) {
     this.$state = { ...this.$state, newState };
+    this.render();
   }
 
-  template() {
-    return '';
+  setHtml() {
+    this.$target.innerHTML = this.render();
+    this.mounted();
   }
 
   render() {
-    this.$target = this.template();
+    return '';
+  }
+
+  mounted() {
   }
 }

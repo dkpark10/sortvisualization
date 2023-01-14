@@ -14,5 +14,6 @@ module.exports = {
     'import/extensions': 'off',
     'no-new': 'off',
     'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
   },
 };
