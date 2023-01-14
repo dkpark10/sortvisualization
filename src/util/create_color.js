@@ -1,5 +1,4 @@
 /**
- *
  * @param {number} divi -무지개색 나눌 수
  * @returns {string[]}
  */

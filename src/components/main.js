@@ -1,21 +1,30 @@
 import Component from '../core/component.js';
-import { createRainbowColors } from '../util/create_color.js';
+import { createRainbowColors, shuffle } from '../util/index.js';
 
 export class Main extends Component {
   constructor({ target }) {
+    const rainbowColors = createRainbowColors();
+
+    const list = Array.from({ length: rainbowColors.length }, (_, i) => i + 1);
+
+    const shuffledList = shuffle(list);
+
     const state = {
-      rainbowColors: createRainbowColors(),
+      rainbowColors,
+      shuffledList,
     };
 
     super({ target, state });
   }
 
   render() {
-    const { rainbowColors } = this.$state;
+    const { rainbowColors, shuffledList } = this.$state;
     const stickStyle = (backgroundColor, height) => `"background-color:${backgroundColor}; height:${height}px"`;
 
     return `
-      ${rainbowColors.map((rainbowColor, idx) => `<span class="stick" style=${stickStyle(rainbowColor, idx * 2)}></span>`).join('')}
+      ${shuffledList
+        .map((item) => `<span class="stick" style=${stickStyle(rainbowColors[item - 1], item * 2)}></span>`)
+        .join('')}
     `;
   }
 }
