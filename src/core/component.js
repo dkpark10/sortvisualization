@@ -7,6 +7,7 @@ export default class Component {
     this.$target = target;
     this.$state = state;
     this.setHtml();
+    this.bindEvent();
   }
 
   setState(newState) {
@@ -24,5 +25,8 @@ export default class Component {
   }
 
   mounted() {
+  }
+
+  bindEvent() {
   }
 }
