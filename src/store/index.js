@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { Store } from '../core/store';
+import { Store } from '../core/store.js';
 
 export const store = new Store({
   state: {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "바닐라 js로 정렬알고리즘 시각화",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
