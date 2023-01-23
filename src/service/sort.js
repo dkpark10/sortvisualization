@@ -6,7 +6,7 @@ export class Sort {
   }
 
   /**
-   * @param {shuffleList} number[]
+   * @param {number[]} shuffleList
    */
-  run(shuffleList) {};
+  run(shuffleList);
 }

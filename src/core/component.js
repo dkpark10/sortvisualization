@@ -24,9 +24,7 @@ export default class Component {
     return '';
   }
 
-  mounted() {
-  }
+  mounted();
 
-  bindEvent() {
-  }
-}
+  bindEvent();
+};
