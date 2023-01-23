@@ -1,50 +1,42 @@
 /* eslint-disable no-param-reassign */
-import { observer, watcher } from './observer.js';
+import { PubSub } from './observer.js';
 
 export class Store {
-  /**
-   * @param {params} 상태, 뮤테이션, 액션 파라미터로 받음
-   */
   constructor({ state, mutations, actions }) {
-    this.$state = observer(state);
+    this.state = state;
     this.$mutations = mutations;
-    this.$action = actions;
+    this.$actions = actions;
+
+    Object.keys(state).forEach((key) => {
+      let value = state[key];
+      const pubSub = new PubSub();
+
+      Object.defineProperty(state, key, {
+        get() {
+          pubSub.subscribe();
+          return value;
+        },
+
+        set(newValue) {
+          if (value === newValue || JSON.stringify(value) === JSON.stringify(newValue)) {
+            return;
+          }
+          value = newValue;
+          pubSub.notify();
+        },
+      });
+    });
   }
 
-  commit(name, payload) {
-    this.mutations[name](this.state, payload);
+  commit(mutationsKey, payload) {
+    this.$mutations[mutationsKey](this.state, payload);
+  }
+
+  dispatch(actionsKey, payload) {
+    this.$actions[actionsKey]({
+      state: this.state,
+      commit: this.commit.bind(this),
+      dispatch: this.dispatch.bind(this),
+    }, payload);
   }
 }
-
-const store = new Store({
-  state: {
-    runToggle: true,
-    shuffleToggle: true,
-    sortType: 'select',
-    price: 100,
-    quantity: 5,
-  },
-
-  mutations: {
-    RUN_TOGGLE(state) {
-      state.runToggle = !state.runToggle;
-    },
-    SHUFFLE_TOGGLE(state) {
-      state.shuffleToggle = !state.shuffleToggle;
-    },
-    SET_SORTTYPE(state, payload) {
-      state.sortType = payload;
-    },
-  },
-
-  actions: {},
-});
-
-let total = store.$state.price * store.$state.quantity;
-watcher(() => {
-  total = store.$state.price * store.$state.quantity;  
-})
-
-console.log(total);
-store.$state.price = 200;
-console.log(total);

@@ -6,7 +6,7 @@ export const watcher = (callback) => {
   target = null;
 };
 
-class PubSub {
+export class PubSub {
   constructor() {
     this.subscribers = [];
   }
@@ -21,26 +21,3 @@ class PubSub {
     this.subscribers.forEach((run) => run());
   }
 }
-
-export const observer = (state) => {
-  Object.keys(state).forEach((key) => {
-    let value = state[key];
-    const pubSub = new PubSub();
-
-    Object.defineProperty(state, key, {
-      get() {
-        pubSub.subscribe();
-        return value;
-      },
-
-      set(newValue) {
-        if (value === newValue) return;
-        if (JSON.stringify(value) === JSON.stringify(newValue)) return;
-        value = newValue;
-        pubSub.notify();
-      },
-    });
-  });
-
-  return state;
-};

@@ -1,5 +1,6 @@
 import Component from '../core/component.js';
-import { createRainbowColors, shuffle } from '../util/index.js';
+import { createRainbowColors } from '../service/index.js';
+import { shuffle } from '../util/index.js';
 
 export class Main extends Component {
   constructor({ target }) {

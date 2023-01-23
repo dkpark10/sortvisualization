@@ -1,4 +1,5 @@
 import Component from '../core/component.js';
+import { store, MUTATION_SET_SORTTYPE } from '../store/index.js';
 
 export class Header extends Component {
   constructor({ target }) {
@@ -40,7 +41,7 @@ export class Header extends Component {
 
   bindEvent() {
     document.querySelector('select').addEventListener('change', (e) => {
-      console.log(e.target.value);
+      store.commit(MUTATION_SET_SORTTYPE, e.target.value);
     });
 
     this.$target.addEventListener('click', (e) => {
@@ -48,6 +49,7 @@ export class Header extends Component {
 
       if (target.classList.contains('run-btn')) {
         console.log('run');
+        console.log(store.state.sortType);
       }
 
       if (target.classList.contains('shuffle-btn')) {
