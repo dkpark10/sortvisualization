@@ -28,12 +28,13 @@ export class Header extends Component {
 
     const stickLength = store.state.stickLength;
     const { compareCount } = this.$state;
+    const percentage = compareCount === 0 ? 0 : Math.ceil(100 / (compareCount + 1) * compareCount);
 
     return `
       <aside>
         <div>길이: ${stickLength}</div>
         <div>비교횟수: ${compareCount}</div>
-        <div>진행도: %</div>
+        <div>진행률: ${percentage}%</div>
       </aside>    
       <aside>
         <div>
@@ -58,11 +59,7 @@ export class Header extends Component {
       }
 
       if (target.classList.contains('shuffle-btn')) {
-        const rainbowColors = getRainbowColors();
-        const length = rainbowColors.length;
-
-        const newShuffledList = shuffle(Array.from({ length }, (_, i) => i + 1));
-        store.commit(MUTATION_SHUFFLED_LIST, newShuffledList);
+        this.onClickShuffle();
       }
     });
 
@@ -96,6 +93,18 @@ export class Header extends Component {
         store.commit(MUTATION_SHUFFLED_LIST, result);
         clearTimeout(timer);
       }, 10);
+    });
+  }
+
+  onClickShuffle() {
+    const rainbowColors = getRainbowColors();
+    const length = rainbowColors.length;
+
+    const newShuffledList = shuffle(Array.from({ length }, (_, i) => i + 1));
+    store.commit(MUTATION_SHUFFLED_LIST, newShuffledList);
+
+    this.setState({
+      compareCount: 0,
     });
   }
 
