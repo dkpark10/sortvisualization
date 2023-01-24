@@ -5,7 +5,11 @@ import { getSortedList, getRainbowColors } from '../service/index.js';
 
 export class Header extends Component {
   constructor({ target }) {
-    super({ target });
+    const state = {
+      compareCount: 0,
+    };
+
+    super({ target, state });
     this.sortType = 'quick';
   }
 
@@ -23,11 +27,12 @@ export class Header extends Component {
     ];
 
     const stickLength = store.state.stickLength;
+    const { compareCount } = this.$state;
 
     return `
       <aside>
         <div>길이: ${stickLength}</div>
-        <div>비교횟수: </div>
+        <div>비교횟수: ${compareCount}</div>
         <div>진행도: %</div>
       </aside>    
       <aside>
@@ -75,7 +80,7 @@ export class Header extends Component {
     const shuffledList = [...store.state.shuffledList];
     const sortedList = getSortedList(this.sortType).run([...shuffledList]);
 
-    sortedList.forEach((element) => {
+    sortedList.forEach((element, idx) => {
       const timer = setTimeout(async () => {
         let result;
         if (element.hasOwnProperty('e1') && element.hasOwnProperty('e2')) {
@@ -83,6 +88,10 @@ export class Header extends Component {
         } else if (element.hasOwnProperty('idx') && element.hasOwnProperty('value')) {
           result = this.sortSubList(element, shuffledList);
         }
+
+        this.setState({
+          compareCount: idx,
+        });
 
         store.commit(MUTATION_SHUFFLED_LIST, result);
         clearTimeout(timer);
