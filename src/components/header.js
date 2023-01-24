@@ -1,5 +1,5 @@
 import Component from '../core/component.js';
-import { store, MUTATION_SET_SORTTYPE } from '../store/index.js';
+import { store, MUTATION_SET_SORTTYPE, MUTATION_RUN_TOGGLE } from '../store/index.js';
 import { getSortedList } from '../service/index.js';
 
 export class Header extends Component {
@@ -30,7 +30,7 @@ export class Header extends Component {
       </aside>    
       <aside>
         <div>
-          <select name="sort-type" style="width:100%; border-radius: 5px">
+          <select name="sort-type" class="select_sort_type" style="width:100%; border-radius: 5px">
             ${sortList.map((sort) => `<option value=${sort[0]}>${sort[1]}</option>`)}
           </select>
         </div>
@@ -43,10 +43,6 @@ export class Header extends Component {
   }
 
   bindEvent() {
-    document.querySelector('select').addEventListener('change', (e) => {
-      store.commit(MUTATION_SET_SORTTYPE, e.target.value);
-    });
-
     this.$target.addEventListener('click', (e) => {
       const { target } = e;
 
@@ -58,9 +54,24 @@ export class Header extends Component {
         console.log('shuffle');
       }
     });
+
+    this.$target.addEventListener('change', (e) => {
+      const { target } = e;
+
+      const select = document.querySelector('select[name="sort-type"]');
+      if (target === select) {
+        store.commit(MUTATION_SET_SORTTYPE, e.target.value);
+      }
+    });
   }
 
   onClickRun() {
+    const shuffledList = store.state.shuffledList;
     const sortType = store.state.sortType;
+    const runToggle = store.state.runToggle;
+    store.commit(MUTATION_RUN_TOGGLE, !runToggle);
+    
+    console.log(sortType);
+    const sortedList = getSortedList(sortType).run([...shuffledList]);
   }
 }
