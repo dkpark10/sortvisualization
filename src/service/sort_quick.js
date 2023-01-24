@@ -1,3 +1,5 @@
+import { Sort } from './sort.js';
+
 /**
  * @description 퀵정렬
   1. 피봇을 맨 처음 인덱스값으로 설정 
@@ -8,7 +10,6 @@
   6. 피봇과 right 스왑
   7. 이중분할로 1 ~ 6 재귀적으로 수행
  */
-
 export class QuickSort extends Sort {
 
   run(shuffledList) {
@@ -17,7 +18,6 @@ export class QuickSort extends Sort {
   }
 
   /**
-   * 
    * @param {number []} shuffledList 
    * @param {number} start 
    * @param {number} end 

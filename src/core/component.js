@@ -1,3 +1,5 @@
+import { watcher } from './observer.js';
+
 export default class Component {
   $target;
 
@@ -8,6 +10,10 @@ export default class Component {
     this.$state = state;
     this.setHtml();
     this.bindEvent();
+
+    watcher(() => {
+      this.setHtml();
+    });
   }
 
   setState(newState) {
@@ -24,7 +30,7 @@ export default class Component {
     return '';
   }
 
-  mounted();
+  mounted() {}
 
-  bindEvent();
+  bindEvent() {}
 };

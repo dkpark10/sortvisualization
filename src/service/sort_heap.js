@@ -1,3 +1,5 @@
+import { Sort } from './sort.js';
+
 /**
  * @description 힙정렬
   힙과 완전이진트리는 비슷하나 다르다.
@@ -10,7 +12,6 @@
   3. 스왑된 새로운 트리로 1번 실행
   4. 2,3번 원소 갯수 - 1 만큼 반복
  */
-
 export class HeapSort extends Sort {
 
   run(shuffledList) {

@@ -1,10 +1,11 @@
 import Component from '../core/component.js';
-import { createRainbowColors } from '../service/index.js';
+import { getRainbowColors } from '../service/index.js';
 import { shuffle } from '../util/index.js';
+import { store, MUTATION_STICK_LENGTH, MUTATION_SHUFFLED_LIST } from '../store/index.js';
 
 export class Main extends Component {
   constructor({ target }) {
-    const rainbowColors = createRainbowColors();
+    const rainbowColors = getRainbowColors();
 
     const list = Array.from({ length: rainbowColors.length }, (_, i) => i + 1);
 
@@ -12,14 +13,17 @@ export class Main extends Component {
 
     const state = {
       rainbowColors,
-      shuffledList,
     };
+
+    store.commit(MUTATION_STICK_LENGTH, shuffledList.length);
+    store.commit(MUTATION_SHUFFLED_LIST, shuffledList);
 
     super({ target, state });
   }
 
   render() {
-    const { rainbowColors, shuffledList } = this.$state;
+    const shuffledList = store.state.shuffledList;
+    const { rainbowColors} = this.$state;
     const stickStyle = (backgroundColor, height) => `"background-color:${backgroundColor}; height:${height}px"`;
 
     return `

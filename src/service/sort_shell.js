@@ -1,3 +1,5 @@
+import { Sort } from './sort.js';
+
 export class ShellSOrt extends Sort{
 
   run(shuffledList) {

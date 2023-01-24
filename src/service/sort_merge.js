@@ -1,3 +1,5 @@
+import { Sort } from './sort.js';
+
 /**
  * @description 병합정렬
  * 병합정렬 또한 기본적으로 분할정복 
@@ -6,8 +8,6 @@
   3. 왼쪽으로 쪼개고 오른쪽으로 쪼갠 배열에서 각각 값을 비교 작은값을 임시 배열에 넣어준다.
   4. 어느 한쪽을 다 넣었다면 나머지 한쪽마저 다 넣는다. 
  */
-
-
 export class MergeSort extends Sort {
 
   run(shuffledList) {

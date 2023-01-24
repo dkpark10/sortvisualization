@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { PubSub } from './observer.js';
+import { Observer } from './observer.js';
 
 export class Store {
   constructor({ state, mutations, actions }) {
@@ -9,7 +9,7 @@ export class Store {
 
     Object.keys(state).forEach((key) => {
       let value = state[key];
-      const pubSub = new PubSub();
+      const pubSub = new Observer();
 
       Object.defineProperty(state, key, {
         get() {

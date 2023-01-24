@@ -6,7 +6,7 @@ export const watcher = (callback) => {
   target = null;
 };
 
-export class PubSub {
+export class Observer {
   constructor() {
     this.subscribers = [];
   }

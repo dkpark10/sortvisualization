@@ -1,5 +1,6 @@
 import Component from '../core/component.js';
 import { store, MUTATION_SET_SORTTYPE } from '../store/index.js';
+import { getSortedList } from '../service/index.js';
 
 export class Header extends Component {
   constructor({ target }) {
@@ -19,9 +20,11 @@ export class Header extends Component {
       ['shell', 'Shell Sort'],
     ];
 
+    const stickLength = store.state.stickLength;
+
     return `
       <aside>
-        <div>길이: </div>
+        <div>길이: ${stickLength}</div>
         <div>비교횟수: </div>
         <div>진행도: %</div>
       </aside>    
@@ -48,13 +51,16 @@ export class Header extends Component {
       const { target } = e;
 
       if (target.classList.contains('run-btn')) {
-        console.log('run');
-        console.log(store.state.sortType);
+        this.onClickRun();
       }
 
       if (target.classList.contains('shuffle-btn')) {
         console.log('shuffle');
       }
     });
+  }
+
+  onClickRun() {
+    const sortType = store.state.sortType;
   }
 }

@@ -8,5 +8,5 @@ export class Sort {
   /**
    * @param {number[]} shuffleList
    */
-  run(shuffleList);
+  run(shuffleList) {}
 }

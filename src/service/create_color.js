@@ -2,7 +2,7 @@
  * @param {number} divi -무지개색 나눌 수
  * @returns {string[]}
  */
-export const createRainbowColors = (divi = 15) => {
+export const getRainbowColors = (divi = 15) => {
   const MAX = 255;
 
   const convertHex = (num) => {

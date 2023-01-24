@@ -1,3 +1,5 @@
+import { Sort } from './sort.js';
+
 /**
  * @description 기수정렬
  * 1. 1의 자리부터 차례대로 열개의 큐 배열에 담는다.
@@ -6,7 +8,6 @@
    4. 담은 큐배열은 처음 큐부터 pop해주면서 새로 배열을 담아준다.
    5. 최고 자리 숫자까지 반복
  */
-
 export class RadixSort extends Sort {
 
    run(shuffledList) {
