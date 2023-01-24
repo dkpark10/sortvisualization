@@ -9,7 +9,6 @@ export class SelectionSort extends Sort {
       for (let j = i + 1; j < len; j++) {
 
         if (shuffledList[i] > shuffledList[j]) {
-
           [shuffledList[i], shuffledList[j]] = [shuffledList[j], shuffledList[i]];
           this.swparr.push({ e1: i, e2: j });
         }

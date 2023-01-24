@@ -1,16 +1,18 @@
 import Component from '../core/component.js';
-import { store, MUTATION_SET_SORTTYPE, MUTATION_RUN_TOGGLE } from '../store/index.js';
-import { getSortedList } from '../service/index.js';
+import { store, MUTATION_SHUFFLED_LIST } from '../store/index.js';
+import { shuffle } from '../util/index.js';
+import { getSortedList, getRainbowColors } from '../service/index.js';
 
 export class Header extends Component {
   constructor({ target }) {
     super({ target });
+    this.sortType = 'quick';
   }
 
   render() {
     const sortList = [
-      ['selection', 'Selection Sort'],
       ['quick', 'Quick Sort'],
+      ['selection', 'Selection Sort'],
       ['insertion', 'Insertion Sort'],
       ['heap', 'Heap Sort'],
       ['bubble', 'Bubble Sort'],
@@ -51,7 +53,11 @@ export class Header extends Component {
       }
 
       if (target.classList.contains('shuffle-btn')) {
-        console.log('shuffle');
+        const rainbowColors = getRainbowColors();
+        const length = rainbowColors.length;
+
+        const newShuffledList = shuffle(Array.from({ length }, (_, i) => i + 1));
+        store.commit(MUTATION_SHUFFLED_LIST, newShuffledList);
       }
     });
 
@@ -60,18 +66,40 @@ export class Header extends Component {
 
       const select = document.querySelector('select[name="sort-type"]');
       if (target === select) {
-        store.commit(MUTATION_SET_SORTTYPE, e.target.value);
+        this.sortType = target.value;
       }
     });
   }
 
   onClickRun() {
-    const shuffledList = store.state.shuffledList;
-    const sortType = store.state.sortType;
-    const runToggle = store.state.runToggle;
-    store.commit(MUTATION_RUN_TOGGLE, !runToggle);
-    
-    console.log(sortType);
-    const sortedList = getSortedList(sortType).run([...shuffledList]);
+    const shuffledList = [...store.state.shuffledList];
+    const sortedList = getSortedList(this.sortType).run([...shuffledList]);
+
+    sortedList.forEach((element) => {
+      const timer = setTimeout(async () => {
+        let result;
+        if (element.hasOwnProperty('e1') && element.hasOwnProperty('e2')) {
+          result = this.sortSwapList(element, shuffledList);
+        } else if (element.hasOwnProperty('idx') && element.hasOwnProperty('value')) {
+          result = this.sortSubList(element, shuffledList);
+        }
+
+        store.commit(MUTATION_SHUFFLED_LIST, result);
+        clearTimeout(timer);
+      }, 10);
+    });
+  }
+
+  sortSwapList({ e1, e2 }, shuffledList) {
+    const temp = shuffledList[e1];
+    shuffledList[e1] = shuffledList[e2];
+    shuffledList[e2] = temp;
+
+    return [...shuffledList];
+  }
+
+  sortSubList({ idx, value }, shuffledList) {
+    shuffledList[idx] = value;
+    return [...shuffledList];
   }
 }

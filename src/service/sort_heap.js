@@ -37,7 +37,7 @@ export class HeapSort extends Sort {
     const rightIdx = here * 2 + 2;
     let bigger = here;
 
-    if (leftIdx < len && shuffledList[bigger] < shuffledList[lefleftIdxtidx]) {
+    if (leftIdx < len && shuffledList[bigger] < shuffledList[leftIdx]) {
       bigger = leftIdx;
     }
 

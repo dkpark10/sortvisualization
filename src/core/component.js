@@ -1,10 +1,6 @@
 import { watcher } from './observer.js';
 
 export default class Component {
-  $target;
-
-  $state;
-
   constructor({ target, state }) {
     this.$target = target;
     this.$state = state;
