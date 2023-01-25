@@ -1,6 +1,6 @@
 import Component from '../core/component.js';
 import { store, MUTATION_SHUFFLED_LIST } from '../store/index.js';
-import { shuffle } from '../util/index.js';
+import { shuffle, sleep} from '../util/index.js';
 import { getSortedList, getRainbowColors } from '../service/index.js';
 
 export class Header extends Component {
@@ -28,6 +28,7 @@ export class Header extends Component {
 
     const stickLength = store.state.stickLength;
     const { compareCount } = this.$state;
+    const sortType = this.sortType;
     const percentage = compareCount === 0 ? 0 : Math.ceil(100 / (compareCount + 1) * compareCount);
 
     return `
@@ -39,7 +40,10 @@ export class Header extends Component {
       <aside>
         <div>
           <select name="sort-type" class="select_sort_type" style="width:100%; border-radius: 5px">
-            ${sortList.map((sort) => `<option value=${sort[0]}>${sort[1]}</option>`)}
+            ${sortList.map(([value, sort]) =>  {
+              const selected = value === sortType ? true : false;
+              return `<option ${selected ? 'selected' : ''} value=${value}>${sort}</option>`
+            }).join('')}
           </select>
         </div>
         <div class='button_wrapper' >
@@ -91,6 +95,7 @@ export class Header extends Component {
         });
 
         store.commit(MUTATION_SHUFFLED_LIST, result);
+
         clearTimeout(timer);
       }, 10);
     });
