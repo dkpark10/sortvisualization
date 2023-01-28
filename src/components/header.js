@@ -77,13 +77,14 @@ export class Header extends Component {
     });
   }
 
-  onClickRun() {
+  async onClickRun() {
     const shuffledList = [...store.state.shuffledList];
     const sortedList = getSortedList(this.sortType).run([...shuffledList]);
 
-    sortedList.forEach((element, idx) => {
-      const timer = setTimeout(async () => {
-        let result;
+    const elements = sortedList.entries();
+    for(const [idx, element] of elements) {
+      await sleep(10);
+      let result;
         if (element.hasOwnProperty('e1') && element.hasOwnProperty('e2')) {
           result = this.sortSwapList(element, shuffledList);
         } else if (element.hasOwnProperty('idx') && element.hasOwnProperty('value')) {
@@ -95,10 +96,7 @@ export class Header extends Component {
         });
 
         store.commit(MUTATION_SHUFFLED_LIST, result);
-
-        clearTimeout(timer);
-      }, 10);
-    });
+      }
   }
 
   onClickShuffle() {
