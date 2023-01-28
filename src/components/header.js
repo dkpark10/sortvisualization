@@ -7,6 +7,7 @@ export class Header extends Component {
   constructor({ target }) {
     const state = {
       compareCount: 0,
+      totalCompareCount: 0,
     };
 
     super({ target, state });
@@ -27,9 +28,9 @@ export class Header extends Component {
     ];
 
     const stickLength = store.state.stickLength;
-    const { compareCount } = this.$state;
+    const { compareCount, totalCompareCount } = this.$state;
     const sortType = this.sortType;
-    const percentage = compareCount === 0 ? 0 : Math.ceil(100 / (compareCount + 1) * compareCount);
+    const percentage = totalCompareCount === 0 ? 0 : Math.floor(((compareCount + 1) / totalCompareCount) * 100);
 
     return `
       <aside>
@@ -93,6 +94,7 @@ export class Header extends Component {
 
         this.setState({
           compareCount: idx,
+          totalCompareCount: sortedList.length,
         });
 
         store.commit(MUTATION_SHUFFLED_LIST, result);
@@ -108,6 +110,7 @@ export class Header extends Component {
 
     this.setState({
       compareCount: 0,
+      totalCompareCount: 0,
     });
   }
 
