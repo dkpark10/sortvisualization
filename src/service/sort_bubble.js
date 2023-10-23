@@ -1,7 +1,9 @@
 import { Sort } from './sort.js';
 
 export class BubbleSort extends Sort {
-
+  /** 
+   * @param {number[]} shuffledList
+   */
   run(shuffledList) {
     const len = shuffledList.length;
 

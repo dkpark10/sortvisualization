@@ -1,7 +1,9 @@
 import { Sort } from './sort.js';
 
 export class ShellSOrt extends Sort{
-
+  /**
+   * @param {number[]} shuffledList 
+   */
   run(shuffledList) {
     const len = shuffledList.length;
     let gap = Math.floor(shuffledList.length / 2);

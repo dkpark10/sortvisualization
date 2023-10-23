@@ -11,7 +11,9 @@ import { Sort } from './sort.js';
   7. 이중분할로 1 ~ 6 재귀적으로 수행
  */
 export class QuickSort extends Sort {
-
+  /**
+   * @param {number[]} shuffledList 
+   */
   run(shuffledList) {
     this.divide(shuffledList, 0, shuffledList.length - 1);
     return this.swparr;

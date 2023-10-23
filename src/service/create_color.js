@@ -13,7 +13,7 @@ export const getRainbowColors = (divi = 15) => {
   /**
    * @description 빨강 -> 노랑
    */
-  const cvtRedtoYellow = Array.from({ length: MAX / divi }, (v, i) => i * divi)
+  const cvtRedToYellow = Array.from({ length: MAX / divi }, (v, i) => i * divi)
     .map((element) => {
       const hex = convertHex(element);
       return `#FF${hex}00`;
@@ -22,7 +22,7 @@ export const getRainbowColors = (divi = 15) => {
   /**
    * @description 노랑 -> 초록
    */
-  const cvtYellowtoGreen = Array.from({ length: MAX / divi }, (v, i) => (MAX / divi - i) * divi)
+  const cvtYellowToGreen = Array.from({ length: MAX / divi }, (v, i) => (MAX / divi - i) * divi)
     .map((element) => {
       const hex = convertHex(element);
       return `#${hex}FF00`;
@@ -31,7 +31,7 @@ export const getRainbowColors = (divi = 15) => {
   /**
    * @description 초록 -> 아쿠아
    */
-  const cvtGreentoAqua = Array.from({ length: MAX / divi }, (v, i) => i * divi)
+  const cvtGreenToAqua = Array.from({ length: MAX / divi }, (v, i) => i * divi)
     .map((element) => {
       const hex = convertHex(element);
       return `#00FF${hex}`;
@@ -40,7 +40,7 @@ export const getRainbowColors = (divi = 15) => {
   /**
    * @description 아쿠아 -> 파랑
    */
-  const cvtAquatoBlue = Array.from({ length: MAX / divi }, (v, ㅑ) => (MAX / divi - ㅑ) * divi)
+  const cvtAquaToBlue = Array.from({ length: MAX / divi }, (v, ㅑ) => (MAX / divi - ㅑ) * divi)
     .map((element) => {
       const hex = convertHex(element);
       return `#00${hex}FF`;
@@ -49,17 +49,17 @@ export const getRainbowColors = (divi = 15) => {
   /**
    * @description 파랑 -> 보라
    */
-  const cvtBluetoViolet = Array.from({ length: MAX / divi }, (v, i) => i * divi)
+  const cvtBlueToViolet = Array.from({ length: MAX / divi }, (v, i) => i * divi)
     .map((element) => {
       const hex = convertHex(element);
       return `#${hex}00FF`;
     });
 
   return [
-    ...cvtRedtoYellow,
-    ...cvtYellowtoGreen,
-    ...cvtGreentoAqua,
-    ...cvtAquatoBlue,
-    ...cvtBluetoViolet,
+    ...cvtRedToYellow,
+    ...cvtYellowToGreen,
+    ...cvtGreenToAqua,
+    ...cvtAquaToBlue,
+    ...cvtBlueToViolet,
   ];
 };

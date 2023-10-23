@@ -1,5 +1,4 @@
 export class Sort {
-
   constructor() {
     this.swparr = [];
     this.subarr = [];

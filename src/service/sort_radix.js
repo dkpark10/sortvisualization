@@ -9,13 +9,15 @@ import { Sort } from './sort.js';
    5. 최고 자리 숫자까지 반복
  */
 export class RadixSort extends Sort {
-
+  /**
+   * @param {number[]} shuffledList 
+   */
    run(shuffledList) {
 
     const queue = Array.from(Array(10), () => []);
-    const maxlength = 3;
+    const maxLength = 3;
 
-    for (let digit = 0; digit < maxlength; digit++) {
+    for (let digit = 0; digit < maxLength; digit++) {
 
       shuffledList.forEach((element) => {
         const num = Math.floor(element / Math.pow(10, digit) % 10);

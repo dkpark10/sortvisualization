@@ -13,7 +13,9 @@ import { Sort } from './sort.js';
   4. 2,3번 원소 갯수 - 1 만큼 반복
  */
 export class HeapSort extends Sort {
-
+  /** 
+   * @param {number[]} shuffledList
+   */
   run(shuffledList) {
     const len = shuffledList.length;
 
@@ -31,6 +33,11 @@ export class HeapSort extends Sort {
     return this.swparr;
   }
 
+  /**
+   * @param {number[]} shuffledList 
+   * @param {number} here 
+   * @param {number} len
+   */
   heapify(shuffledList, here, len) {
 
     const leftIdx = here * 2 + 1;

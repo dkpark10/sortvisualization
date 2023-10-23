@@ -9,14 +9,15 @@ import { Sort } from './sort.js';
   4. 어느 한쪽을 다 넣었다면 나머지 한쪽마저 다 넣는다. 
  */
 export class MergeSort extends Sort {
-
+  /** 
+   * @param {number[]} shuffledList
+   */
   run(shuffledList) {
     this.divide(shuffledList, 0, shuffledList.length - 1);
     return this.subarr;
   }
 
   /**
-   * 
    * @param {number[]} shuffledList 
    * @param {number} left 
    * @param {number} mid 
@@ -25,25 +26,25 @@ export class MergeSort extends Sort {
   merge(shuffledList, left, mid, right) {
 
     const tmp = [];
-    let leftidx = left;
-    let rightidx = mid + 1;
+    let leftIdx = left;
+    let rightIdx = mid + 1;
 
     // 왼쪽 또는 오른쪽 한 인덱스가 끝점에 다다르면 break;
-    while (leftidx <= mid && rightidx <= right) {
+    while (leftIdx <= mid && rightIdx <= right) {
       const value =
-        shuffledList[leftidx] < shuffledList[rightidx] ?
-          shuffledList[leftidx++] :
-          shuffledList[rightidx++];
+        shuffledList[leftIdx] < shuffledList[rightIdx] ?
+          shuffledList[leftIdx++] :
+          shuffledList[rightIdx++];
 
       tmp.push(value);
     }
 
-    if (leftidx <= mid) {
-      for (let i = leftidx; i <= mid; i++)
+    if (leftIdx <= mid) {
+      for (let i = leftIdx; i <= mid; i++)
         tmp.push(shuffledList[i])
     }
     else {
-      for (let i = rightidx; i <= right; i++)
+      for (let i = rightIdx; i <= right; i++)
         tmp.push(shuffledList[i]);
     }
 
@@ -57,6 +58,11 @@ export class MergeSort extends Sort {
     }
   }
 
+  /**
+   * @param {number[]} shuffledList 
+   * @param {number} left 
+   * @param {number} right 
+   */
   divide(shuffledList, left, right) {
     if (left < right) {
       const mid = Math.floor((left + right) / 2);
