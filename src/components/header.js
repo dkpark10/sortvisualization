@@ -1,6 +1,6 @@
 import Component from '../core/component.js';
 import { store, MUTATION_SHUFFLED_LIST } from '../store/index.js';
-import { shuffle, sleep} from '../util/index.js';
+import { shuffle, sleep } from '../util/index.js';
 import { getSortedList, getRainbowColors } from '../service/index.js';
 
 export class Header extends Component {
@@ -41,10 +41,12 @@ export class Header extends Component {
       <aside>
         <div>
           <select name="sort-type" class="select_sort_type" style="width:100%; border-radius: 5px">
-            ${sortList.map(([value, sort]) =>  {
-              const selected = value === sortType ? true : false;
-              return `<option ${selected ? 'selected' : ''} value=${value}>${sort}</option>`
-            }).join('')}
+            ${sortList
+              .map(([value, sort]) => {
+                const selected = value === sortType ? true : false;
+                return `<option ${selected ? 'selected' : ''} value=${value}>${sort}</option>`;
+              })
+              .join('')}
           </select>
         </div>
         <div class='button_wrapper' >
@@ -83,22 +85,25 @@ export class Header extends Component {
     const sortedList = getSortedList(this.sortType).run([...shuffledList]);
 
     const elements = sortedList.entries();
-    for(const [idx, element] of elements) {
+    for (const [idx, element] of elements) {
       await sleep(10);
       let result;
-        if (element.hasOwnProperty('e1') && element.hasOwnProperty('e2')) {
-          result = this.sortSwapList(element, shuffledList);
-        } else if (element.hasOwnProperty('idx') && element.hasOwnProperty('value')) {
-          result = this.sortSubList(element, shuffledList);
-        }
-
-        this.setState({
-          compareCount: idx,
-          totalCompareCount: sortedList.length,
-        });
-
-        store.commit(MUTATION_SHUFFLED_LIST, result);
+      if (Object.prototype.hasOwnProperty.call(element, 'e1') && Object.prototype.hasOwnProperty.call(element, 'e2')) {
+        result = this.sortSwapList(element, shuffledList);
+      } else if (
+        Object.prototype.hasOwnProperty.call(element, 'idx') &&
+        Object.prototype.hasOwnProperty.call(element, 'value')
+      ) {
+        result = this.sortSubList(element, shuffledList);
       }
+
+      this.setState({
+        compareCount: idx,
+        totalCompareCount: sortedList.length,
+      });
+
+      store.commit(MUTATION_SHUFFLED_LIST, result);
+    }
   }
 
   onClickShuffle() {
