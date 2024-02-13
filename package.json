@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "deploy": "gh-pages -d ./"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,13 @@
   "bugs": {
     "url": "https://github.com/dkpark10/sortvisualization/issues"
   },
-  "homepage": "https://github.com/dkpark10/sortvisualization",
+  "homepage": "https://dkpark10.github.io/sortvisualization/",
   "devDependencies": {
     "cypress": "^12.3.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
+    "gh-pages": "^6.1.1",
     "prettier": "^2.8.2"
   }
 }
