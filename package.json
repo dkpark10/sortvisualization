@@ -1,5 +1,5 @@
 {
-  "name": "sortvisualization",
+  "name": "sort_visualization",
   "version": "1.0.0",
   "description": "바닐라 js로 정렬알고리즘 시각화",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dkpark10/rainbowsort.git"
+    "url": "git+https://github.com/dkpark10/sortvisualization.git"
   },
   "author": "dkpark10",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dkpark10/rainbowsort/issues"
+    "url": "https://github.com/dkpark10/sortvisualization/issues"
   },
-  "homepage": "https://github.com/dkpark10/rainbowsort#readme",
+  "homepage": "https://github.com/dkpark10/sortvisualization",
   "devDependencies": {
     "cypress": "^12.3.0",
     "eslint": "^7.32.0 || ^8.2.0",
