@@ -1,5 +1,6 @@
 export const html = (strings, ...rest) => {
-  console.log(strings);
-  console.log(strings.join(""));
+  rest.reduce((acc, template, idx) => {
+    console.log(template);
+  }, '');
   return strings.join("");
 };

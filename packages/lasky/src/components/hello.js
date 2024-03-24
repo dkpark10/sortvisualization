@@ -1,20 +1,16 @@
-export class Hello extends HTMLElement {
-  static get observedAttributes() {return ['count']; }
+import { Component } from "../core/component";
+
+export class Hello extends Component {
+  static get observedAttributes() {
+    return ["count"];
+  }
 
   constructor() {
     super();
-    if (!Hello.observedAttributes) {
-      this.render();
-    }
-  }
-
-  attributeChangedCallback(attr, oldValue, newValue) {
-    this[attr] = newValue;
-    this.render();
   }
 
   render() {
-    this.innerHTML = `<div>hello ${this['count']}</div>`;
+    return `<div>hello ${this["count"]}</div>`;
   }
 }
 
