@@ -1,7 +1,10 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-param-reassign */
+// eslint-disable-next-line import/no-extraneous-dependencies, import/no-relative-packages
+import { getSortedList, getRainbowColors } from '../../../services/index.js';
 import Component from '../core/component.js';
 import { store, MUTATION_SHUFFLED_LIST } from '../store/index.js';
 import { shuffle, sleep } from '../util/index.js';
-import { getSortedList, getRainbowColors } from '../service/index.js';
 
 export class Header extends Component {
   constructor({ target }) {
@@ -27,10 +30,12 @@ export class Header extends Component {
       ['shell', 'Shell Sort'],
     ];
 
-    const stickLength = store.state.stickLength;
+    const { stickLength } = store.state;
     const { compareCount, totalCompareCount } = this.$state;
-    const sortType = this.sortType;
-    const percentage = totalCompareCount === 0 ? 0 : Math.floor(((compareCount + 1) / totalCompareCount) * 100);
+    const { sortType } = this;
+    const percentage = totalCompareCount === 0
+      ? 0
+      : Math.floor(((compareCount + 1) / totalCompareCount) * 100);
 
     return `
       <aside>
@@ -42,11 +47,11 @@ export class Header extends Component {
         <div>
           <select name="sort-type" class="select_sort_type" style="width:100%; border-radius: 5px">
             ${sortList
-              .map(([value, sort]) => {
-                const selected = value === sortType ? true : false;
-                return `<option ${selected ? 'selected' : ''} value=${value}>${sort}</option>`;
-              })
-              .join('')}
+    .map(([value, sort]) => {
+      const selected = value === sortType;
+      return `<option ${selected ? 'selected' : ''} value=${value}>${sort}</option>`;
+    })
+    .join('')}
           </select>
         </div>
         <div class='button_wrapper' >
@@ -86,13 +91,14 @@ export class Header extends Component {
 
     const elements = sortedList.entries();
     for (const [idx, element] of elements) {
+      // eslint-disable-next-line no-await-in-loop
       await sleep(10);
       let result;
       if (Object.prototype.hasOwnProperty.call(element, 'e1') && Object.prototype.hasOwnProperty.call(element, 'e2')) {
         result = this.sortSwapList(element, shuffledList);
       } else if (
-        Object.prototype.hasOwnProperty.call(element, 'idx') &&
-        Object.prototype.hasOwnProperty.call(element, 'value')
+        Object.prototype.hasOwnProperty.call(element, 'idx')
+        && Object.prototype.hasOwnProperty.call(element, 'value')
       ) {
         result = this.sortSubList(element, shuffledList);
       }
@@ -108,7 +114,7 @@ export class Header extends Component {
 
   onClickShuffle() {
     const rainbowColors = getRainbowColors();
-    const length = rainbowColors.length;
+    const { length } = rainbowColors;
 
     const newShuffledList = shuffle(Array.from({ length }, (_, i) => i + 1));
     store.commit(MUTATION_SHUFFLED_LIST, newShuffledList);
