@@ -1,12 +1,13 @@
+// eslint-disable-next-line import/no-relative-packages
+import { getRainbowColors } from '../../../services/index.js';
 import Component from '../core/component.js';
-import { getRainbowColors } from '../service/index.js';
 import { shuffle } from '../util/index.js';
 import { store, MUTATION_STICK_LENGTH, MUTATION_SHUFFLED_LIST } from '../store/index.js';
 
 export class Main extends Component {
   constructor({ target }) {
     const rainbowColors = getRainbowColors();
-    const length = rainbowColors.length;
+    const { length } = rainbowColors;
 
     const shuffledList = shuffle(Array.from({ length }, (_, i) => i + 1));
 
@@ -21,15 +22,15 @@ export class Main extends Component {
   }
 
   render() {
-    const shuffledList = store.state.shuffledList;
-    const { rainbowColors} = this.$state;
+    const { shuffledList } = store.state;
+    const { rainbowColors } = this.$state;
 
     const stickStyle = (backgroundColor, height) => `"background-color:${backgroundColor}; height:${height * 2}px"`;
 
     return `
       ${shuffledList
-        .map((item) => `<span class="stick" style=${stickStyle(rainbowColors[item - 1], item )}></span>`)
-        .join('')}
+    .map((item) => `<span class="stick" style=${stickStyle(rainbowColors[item - 1], item)}></span>`)
+    .join('')}
     `;
   }
 }

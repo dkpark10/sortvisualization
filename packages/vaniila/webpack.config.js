@@ -9,6 +9,11 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     clean: true,
   },
+  resolve: {
+    alias: {
+      '@services': path.resolve(__dirname, '../services'),
+    },
+  },
   module: {
     rules: [
       {
