@@ -1,0 +1,16 @@
+{
+  "name": "lasky",
+  "version": "1.0.0",
+  "description": "lasky",
+  "main": "index.html",
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

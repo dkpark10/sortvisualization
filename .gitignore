@@ -1,2 +1,4 @@
 node_modules/
 .turbo
+packages/lasky/.cache
+packages/lasky/dist
